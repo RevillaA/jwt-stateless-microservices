@@ -3,8 +3,8 @@ import { config } from '../config/env.js';
 
 export class JwtService {
     /**
-     * Firma un token JWT con los claims estandares requeridos.
-     * @param {Object} user - Datos del usuario.
+     * Genera un JWT con expiracion de 1 minuto.
+     * @param {Object} user
      * @returns {string}
      */
     static signToken(user) {
@@ -29,7 +29,7 @@ export class JwtService {
     }
 
     /**
-     * Verifica un token JWT usando el metodo oficial de jsonwebtoken.
+     * Verifica y decodifica un token JWT.
      * @param {string} token
      * @returns {Object}
      */

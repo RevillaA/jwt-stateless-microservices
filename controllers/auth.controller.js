@@ -2,7 +2,10 @@ import { JwtService } from '../services/jwt.service.js';
 
 export class AuthController {
     /**
-     * Simula un servidor de autenticacion que genera un token.
+     * Genera un token para autenticacion simulada.
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     * @returns {Promise<void>}
      */
     static async generateToken(req, res) {
         const { username, password } = req.body;
