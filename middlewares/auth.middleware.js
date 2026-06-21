@@ -12,7 +12,7 @@ export const authMiddleware = (req, res, next) => {
     const parts = authorizationHeader.split(' ');
 
     if (parts.length !== 2 || parts[0] !== 'Bearer' || !parts[1]) {
-        return res.status(400).json({
+        return res.status(401).json({
             message: 'Formato Bearer invalido.'
         });
     }
@@ -32,7 +32,7 @@ export const authMiddleware = (req, res, next) => {
 
         if (error.name === 'JsonWebTokenError') {
             if (error.message === 'jwt malformed') {
-                return res.status(400).json({
+                return res.status(401).json({
                     message: 'Token malformado.'
                 });
             }
@@ -44,7 +44,7 @@ export const authMiddleware = (req, res, next) => {
             }
 
             if (error.message === 'invalid algorithm') {
-                return res.status(400).json({
+                return res.status(401).json({
                     message: 'Algoritmo invalido.'
                 });
             }
